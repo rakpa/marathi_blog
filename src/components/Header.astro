@@ -82,11 +82,20 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   // Mobile menu
   const menuBtn = document.getElementById('menu-toggle');
   const drawer = document.getElementById('mobile-nav');
-  menuBtn?.addEventListener('click', () => {
-    const open = drawer?.hasAttribute('hidden');
+  const setMenu = (open: boolean) => {
     if (open) drawer?.removeAttribute('hidden');
     else drawer?.setAttribute('hidden', '');
-    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn?.setAttribute('aria-expanded', String(open));
+  };
+  menuBtn?.addEventListener('click', () => setMenu(!!drawer?.hasAttribute('hidden')));
+  // Close on Escape or when tapping outside the header.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+  document.addEventListener('click', (e) => {
+    if (drawer?.hasAttribute('hidden')) return;
+    const t = e.target as Node;
+    if (!drawer?.contains(t) && !menuBtn?.contains(t)) setMenu(false);
   });
 
   // Subtle shadow once the page scrolls.
@@ -151,7 +160,14 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   :global([data-theme='light']) .theme-icon--moon { display: inline-grid; }
   :global([data-theme='dark']) .theme-icon--sun { display: inline-grid; }
 
-  .mobile-nav { display: none; border-top: 1px solid var(--border); background: var(--surface); }
+  /* Drawer overlays content (absolute) so it never shifts the page.
+     Visibility is driven solely by the `hidden` attribute, toggled in JS. */
+  .mobile-nav {
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--surface); border-top: 1px solid var(--border);
+    box-shadow: var(--shadow-l); z-index: 90;
+  }
+  .mobile-nav[hidden] { display: none; }
   .mobile-nav__list { list-style: none; padding: var(--space-s) var(--gutter); margin: 0; }
   .mobile-nav__link {
     display: block; padding: 0.85rem 0.5rem; font-family: var(--font-ui);
@@ -161,10 +177,14 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   .mobile-nav__link:last-child { border-bottom: 0; }
 
   @media (max-width: 860px) {
-    .nav { display: none; }
+    .nav { display: none; margin-inline-start: 0; }
     .icon-btn--menu { display: inline-grid; }
-    .mobile-nav { display: block; }
-    .nav { margin-inline-start: 0; }
     .site-header__actions { margin-inline-start: auto; }
+  }
+
+  /* Above the mobile breakpoint the drawer must never appear, even if it was
+     left open before a resize. */
+  @media (min-width: 861px) {
+    .mobile-nav { display: none !important; }
   }
 </style>
