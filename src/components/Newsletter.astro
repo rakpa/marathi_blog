@@ -1,0 +1,68 @@
+---
+import { icon } from '@/lib/icons';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+
+<section class={`newsletter ${compact ? 'newsletter--compact' : ''}`} aria-labelledby="nl-title">
+  <div class="newsletter__text">
+    <p class="eyebrow">मोफत साप्ताहिक</p>
+    <h2 id="nl-title" class="newsletter__title">दर आठवड्याला, फक्त उपयुक्त ज्ञान</h2>
+    <p class="newsletter__sub">
+      व्यवसाय, तंत्रज्ञान आणि स्टार्टअपवरचे सखोल लेख थेट तुमच्या इनबॉक्समध्ये.
+      स्पॅम नाही, क्लिकबेट नाही — फक्त वाचनीय आणि अमलात आणण्याजोगं.
+    </p>
+  </div>
+  <form
+    class="newsletter__form"
+    action="#"
+    method="post"
+    onsubmit="this.querySelector('.newsletter__done').hidden=false;this.querySelector('.newsletter__row').hidden=true;return false;"
+  >
+    <div class="newsletter__row">
+      <label for="nl-email" class="visually-hidden">ईमेल पत्ता</label>
+      <input
+        id="nl-email"
+        type="email"
+        name="email"
+        required
+        placeholder="तुमचा ईमेल पत्ता"
+        autocomplete="email"
+      />
+      <button type="submit" class="btn btn-primary">
+        सबस्क्राइब करा
+        <Fragment set:html={icon('arrow')} />
+      </button>
+    </div>
+    <p class="newsletter__done" hidden>धन्यवाद! 🎉 लवकरच पहिलं पत्र मिळेल.</p>
+    <p class="newsletter__fine">कधीही अनसबस्क्राइब करता येईल.</p>
+  </form>
+</section>
+
+<style>
+  .newsletter {
+    display: grid; gap: var(--space-l); align-items: center;
+    grid-template-columns: 1.1fr 1fr;
+    background:
+      radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--brand) 14%, var(--surface)) 0%, var(--surface) 55%);
+    border: 1px solid var(--border); border-radius: var(--radius-l);
+    padding: clamp(1.5rem, 1rem + 3vw, 3rem);
+  }
+  .newsletter__title { font-size: var(--step-2); margin-block: 0.3rem 0.6rem; }
+  .newsletter__sub { color: var(--text-soft); max-width: 46ch; }
+  .newsletter__row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .newsletter input[type='email'] {
+    flex: 1 1 200px; padding: 0.7rem 1rem; border-radius: var(--radius-full);
+    border: 1.5px solid var(--border); background: var(--bg); color: var(--text);
+  }
+  .newsletter input:focus-visible { border-color: var(--brand); outline: none; }
+  .newsletter__done { color: var(--brand); font-weight: 700; }
+  .newsletter__fine { color: var(--text-mute); font-size: var(--step--1); margin-top: 0.6rem; }
+  .newsletter :global(svg) { width: 18px; height: 18px; }
+
+  .newsletter--compact { grid-template-columns: 1fr; gap: var(--space-m); }
+
+  @media (max-width: 760px) {
+    .newsletter { grid-template-columns: 1fr; }
+  }
+</style>

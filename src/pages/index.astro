@@ -1,0 +1,174 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import CategoryBadge from '@/components/CategoryBadge.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import { getPublishedArticles } from '@/lib/articles';
+import { CATEGORIES } from '@/content.config';
+import { formatDateMr, isoDate, readingTimeMr } from '@/lib/format';
+import { SITE } from '@/site.config';
+
+const articles = await getPublishedArticles();
+const featured = articles.find((a) => a.data.featured) ?? articles[0];
+const rest = articles.filter((a) => a.id !== featured?.id);
+const topStories = rest.slice(0, 4);
+const more = rest.slice(4);
+
+const cats = Object.keys(CATEGORIES) as (keyof typeof CATEGORIES)[];
+---
+
+<BaseLayout title={SITE.name}>
+  {/* ---------- Hero ---------- */}
+  {
+    featured && (
+      <section class="hero wrap">
+        <a href={`/articles/${featured.id}`} class="hero__media">
+          {featured.data.heroImage && (
+            <Image
+              src={featured.data.heroImage}
+              alt={featured.data.heroImageAlt ?? ''}
+              widths={[480, 800, 1200]}
+              sizes="(max-width: 900px) 92vw, 640px"
+              loading="eager"
+              fetchpriority="high"
+              class="hero__img"
+            />
+          )}
+        </a>
+        <div class="hero__body">
+          <p class="eyebrow">आजचा मुख्य लेख</p>
+          <CategoryBadge category={featured.data.category} />
+          <h1 class="hero__title">
+            <a href={`/articles/${featured.id}`}>{featured.data.title}</a>
+          </h1>
+          <p class="hero__summary">{featured.data.summary}</p>
+          <div class="hero__meta">
+            <span>{featured.data.author}</span>
+            <span aria-hidden="true">·</span>
+            <time datetime={isoDate(featured.data.publishDate)}>
+              {formatDateMr(featured.data.publishDate)}
+            </time>
+            <span aria-hidden="true">·</span>
+            <span>{readingTimeMr(featured.body ?? '')}</span>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---------- Top stories grid ---------- */}
+  {
+    topStories.length > 0 && (
+      <section class="wrap section">
+        <div class="section__head">
+          <h2 class="section__title">ताजे लेख</h2>
+          <a href="/search" class="section__link">सर्व लेख →</a>
+        </div>
+        <div class="grid grid--3">
+          {topStories.map((a) => (
+            <ArticleCard article={a} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---------- Newsletter ---------- */}
+  <section class="wrap section">
+    <Newsletter />
+  </section>
+
+  {/* ---------- Browse by category ---------- */}
+  <section class="wrap section">
+    <div class="section__head">
+      <h2 class="section__title">विषयानुसार वाचा</h2>
+    </div>
+    <div class="cat-grid">
+      {
+        cats.map((c) => (
+          <a href={`/category/${c}`} class="cat-card" style={`--c: var(--cat-${c})`}>
+            <span class="cat-card__emoji" aria-hidden="true">{CATEGORIES[c].emoji}</span>
+            <span class="cat-card__label">{CATEGORIES[c].label}</span>
+            <span class="cat-card__en">{CATEGORIES[c].en}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* ---------- More articles ---------- */}
+  {
+    more.length > 0 && (
+      <section class="wrap section">
+        <div class="section__head">
+          <h2 class="section__title">आणखी वाचनीय</h2>
+        </div>
+        <div class="grid grid--2">
+          {more.map((a) => (
+            <ArticleCard article={a} variant="wide" />
+          ))}
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--space-xl);
+    align-items: center; padding-block: var(--space-xl) var(--space-l);
+  }
+  .hero__media { display: block; border-radius: var(--radius-l); overflow: hidden; box-shadow: var(--shadow-m); }
+  .hero__img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 0.5s ease; }
+  .hero__media:hover .hero__img { transform: scale(1.03); }
+  .hero__body { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+  .hero__title { font-size: var(--step-4); letter-spacing: -0.015em; margin-block: 0.2rem; }
+  .hero__title a { color: var(--text); text-decoration: none; }
+  .hero__title a:hover { color: var(--brand); }
+  .hero__summary { font-size: var(--step-1); color: var(--text-soft); line-height: 1.6; max-width: 52ch; }
+  .hero__meta {
+    display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
+    font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute);
+  }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: var(--space-l); }
+    .hero__media { order: -1; }
+  }
+
+  /* Sections */
+  .section { padding-block: var(--space-xl); }
+  .section__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: var(--space-l); }
+  .section__title { font-size: var(--step-2); }
+  .section__title::after {
+    content: ''; display: block; width: 48px; height: 4px; margin-top: 0.5rem;
+    background: var(--brand); border-radius: var(--radius-full);
+  }
+  .section__link { font-family: var(--font-ui); font-weight: 600; font-size: var(--step--1); text-decoration: none; color: var(--brand); white-space: nowrap; }
+
+  .grid { display: grid; gap: var(--space-l); }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) { .grid--3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .grid--3, .grid--2 { grid-template-columns: 1fr; } }
+
+  /* Category tiles */
+  .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-m); }
+  .cat-card {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    padding: var(--space-m); border-radius: var(--radius-l);
+    border: 1px solid var(--border); background: var(--surface);
+    text-decoration: none; position: relative; overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .cat-card::before {
+    content: ''; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--c);
+  }
+  .cat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-m); border-color: color-mix(in srgb, var(--c) 50%, var(--border)); }
+  .cat-card__emoji { font-size: 1.6rem; }
+  .cat-card__label { font-family: var(--font-display); font-size: var(--step-1); color: var(--text); }
+  .cat-card__en { font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute); letter-spacing: 0.04em; }
+  @media (max-width: 760px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .cat-grid { grid-template-columns: 1fr; } }
+</style>

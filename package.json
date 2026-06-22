@@ -1,0 +1,20 @@
+{
+  "name": "vidnyan-marathi-magazine",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "विद्या — a premium Marathi-language digital magazine for ambitious, curious readers.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.6.1",
+    "reading-time": "^1.5.0",
+    "sharp": "^0.33.5"
+  }
+}

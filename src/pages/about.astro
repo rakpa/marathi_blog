@@ -1,0 +1,133 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from '@/site.config';
+
+const steps = [
+  {
+    n: '१',
+    title: 'विषय निवड व संशोधन',
+    body: 'आम्ही फक्त सहा विषयांवर लिहितो — व्यवसाय, तंत्रज्ञान, स्टार्टअप, कौशल्ये, उद्योजकता आणि करिअर. प्रत्येक विषयासाठी जगभरातील विश्वासार्ह, ताज्या स्रोतांचा अभ्यास करतो: मूळ अहवाल, अधिकृत आकडेवारी आणि तज्ज्ञांचं विश्लेषण.',
+  },
+  {
+    n: '२',
+    title: 'तथ्य-तपासणी',
+    body: 'प्रत्येक आकडा आणि दावा किमान दोन स्वतंत्र स्रोतांशी पडताळला जातो. मत आणि तथ्य स्पष्टपणे वेगळे ठेवले जातात. कोणताही दावा स्रोताशिवाय प्रकाशित होत नाही.',
+  },
+  {
+    n: '३',
+    title: 'मराठी मसुदा',
+    body: 'माहिती नैसर्गिक, आधुनिक, संवादी मराठीत लिहिली जाते — यांत्रिक भाषांतर नाही. तांत्रिक संज्ञा सोप्या करून समजावल्या जातात. प्रत्येक लेखाला बलवान शीर्षक, “का वाचावं” सारांश आणि “मुख्य मुद्दे” चौकट असते.',
+  },
+  {
+    n: '४',
+    title: 'संपादन व प्रकाशन',
+    body: 'भाषा, रचना आणि अचूकतेसाठी संपादन होतं. स्रोत जोडले जातात, प्रकाशन तारीख नमूद होते आणि लेख प्रकाशित होतो. नंतर चूक आढळल्यास ती पारदर्शकपणे दुरुस्त केली जाते.',
+  },
+];
+
+const principles = [
+  ['ताजेपणा व अचूकता', 'प्रत्येक लेखापूर्वी ताजं संशोधन; आकडे स्रोतांसह.'],
+  ['अस्सल मराठी', 'उबदार, आत्मविश्वासी संपादकीय आवाज — भाषांतराचा कोरडेपणा नाही.'],
+  ['मूल्य-केंद्रित', 'वाचक प्रत्येक लेखानंतर अधिक सक्षम झाला पाहिजे.'],
+  ['विश्वास', 'चोरी नाही, क्लिकबेट नाही, सनसनाटी नाही. मत व तथ्य वेगळे.'],
+];
+---
+
+<BaseLayout
+  title="आमच्याबद्दल"
+  description={`${SITE.name} म्हणजे काय, आम्ही काय लिहितो आणि आमची संपादकीय प्रक्रिया कशी चालते.`}
+>
+  <article class="about wrap">
+    <header class="about__head">
+      <p class="eyebrow">आमच्याबद्दल</p>
+      <h1 class="about__title">{SITE.tagline}</h1>
+      <p class="about__lede">
+        <strong>{SITE.name}</strong> हे महत्त्वाकांक्षी, जिज्ञासू मराठी वाचकांसाठीचं
+        डिजिटल मासिक आहे. विद्यार्थी, व्यावसायिक, उद्योजक आणि आयुष्यभर शिकू
+        इच्छिणाऱ्यांना जगातलं उत्तम ज्ञान त्यांच्याच भाषेत — सखोल, उपयुक्त आणि
+        विश्वासार्ह स्वरूपात — देणं हेच आमचं ध्येय.
+      </p>
+    </header>
+
+    <section class="about__block">
+      <h2>आमची तत्त्वं</h2>
+      <div class="principles">
+        {
+          principles.map(([h, b]) => (
+            <div class="principle">
+              <h3>{h}</h3>
+              <p>{b}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="about__block">
+      <h2>आम्ही काय <em>लिहीत नाही</em></h2>
+      <p class="about__text">
+        राजकारण, गुन्हेगारी, सेलिब्रिटी गॉसिप, समाजात फूट पाडणारं किंवा भडकवणारं
+        लेखन आणि “धक्कादायक” बातम्या — यांना इथे जागा नाही. एखाद्या विषयातून
+        वाचकाला खरं मूल्य मिळत नसेल, तर तो आम्ही प्रकाशितच करत नाही.
+        <strong> दर्जा, संख्येपेक्षा महत्त्वाचा.</strong>
+      </p>
+    </section>
+
+    <section id="workflow" class="about__block">
+      <h2>संपादकीय प्रक्रिया</h2>
+      <p class="about__text">
+        एका विषयाचा प्रवास — वेब संशोधनापासून प्रकाशित मराठी लेखापर्यंत — असा होतो:
+      </p>
+      <ol class="workflow">
+        {
+          steps.map((s) => (
+            <li class="workflow__step">
+              <span class="workflow__n" aria-hidden="true">{s.n}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="about__block about__cta">
+      <h2>चूक आढळली? आम्हाला कळवा</h2>
+      <p class="about__text">
+        पारदर्शकता हेच आमचं चलन आहे. कोणत्याही लेखात त्रुटी दिसल्यास
+        <a href={`mailto:${SITE.email}`}> {SITE.email}</a> वर लिहा — आम्ही ती
+        उघडपणे दुरुस्त करू.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .about { max-width: 78ch; padding-block: var(--space-2xl); }
+  .about__head { margin-bottom: var(--space-2xl); }
+  .about__title { font-size: var(--step-3); margin-block: 0.4rem var(--space-m); }
+  .about__lede { font-size: var(--step-1); line-height: 1.7; color: var(--text-soft); }
+  .about__block { margin-block: var(--space-2xl); }
+  .about__block h2 { font-size: var(--step-2); margin-bottom: var(--space-m); }
+  .about__text { color: var(--text-soft); line-height: 1.8; }
+
+  .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-m); }
+  .principle { padding: var(--space-m); border: 1px solid var(--border); border-radius: var(--radius-m); background: var(--surface); }
+  .principle h3 { font-size: var(--step-0); color: var(--brand); margin-bottom: 0.3rem; }
+  .principle p { color: var(--text-soft); font-size: var(--step--1); line-height: 1.6; }
+  @media (max-width: 600px) { .principles { grid-template-columns: 1fr; } }
+
+  .workflow { list-style: none; padding: 0; display: grid; gap: var(--space-l); margin-top: var(--space-l); }
+  .workflow__step { display: flex; gap: var(--space-m); align-items: flex-start; }
+  .workflow__n {
+    flex: 0 0 auto; display: grid; place-items: center; width: 48px; height: 48px;
+    background: var(--brand); color: #fff; border-radius: var(--radius-full);
+    font-family: var(--font-display); font-size: var(--step-1);
+  }
+  .workflow__step h3 { font-size: var(--step-1); margin-bottom: 0.3rem; }
+  .workflow__step p { color: var(--text-soft); line-height: 1.7; }
+
+  .about__cta { padding: var(--space-l); background: var(--surface-2); border-radius: var(--radius-l); }
+</style>

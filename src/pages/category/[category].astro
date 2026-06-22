@@ -1,0 +1,64 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import { getPublishedArticles } from '@/lib/articles';
+import { CATEGORIES, type CategoryId } from '@/content.config';
+
+export const getStaticPaths = (async () => {
+  const articles = await getPublishedArticles();
+  return (Object.keys(CATEGORIES) as CategoryId[]).map((category) => ({
+    params: { category },
+    props: {
+      category,
+      articles: articles.filter((a) => a.data.category === category),
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { category, articles } = Astro.props;
+const cat = CATEGORIES[category];
+---
+
+<BaseLayout
+  title={`${cat.label} — लेख`}
+  description={`${cat.label} (${cat.en}) या विषयावरचे विद्यावरील सर्व सखोल लेख.`}
+>
+  <header class="cat-hero" style={`--c: var(--cat-${category})`}>
+    <div class="wrap">
+      <p class="eyebrow">{cat.en}</p>
+      <h1 class="cat-hero__title">
+        <span aria-hidden="true">{cat.emoji}</span> {cat.label}
+      </h1>
+    </div>
+  </header>
+
+  <section class="wrap section">
+    {
+      articles.length > 0 ? (
+        <div class="grid">
+          {articles.map((a) => (
+            <ArticleCard article={a} />
+          ))}
+        </div>
+      ) : (
+        <p class="empty">या विभागात लवकरच नवे लेख येत आहेत. 🌱</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--c) 14%, var(--bg)), var(--bg));
+    padding-block: var(--space-2xl) var(--space-xl);
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-hero__title { font-size: var(--step-4); color: var(--text); }
+  .cat-hero .eyebrow { color: var(--c); }
+  .section { padding-block: var(--space-xl); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+  .empty { color: var(--text-mute); font-size: var(--step-1); padding-block: var(--space-2xl); text-align: center; }
+</style>

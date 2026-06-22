@@ -1,0 +1,21 @@
+---
+import { CATEGORIES, type CategoryId } from '@/content.config';
+
+interface Props {
+  category: CategoryId;
+  withEmoji?: boolean;
+  class?: string;
+}
+
+const { category, withEmoji = true, class: className = '' } = Astro.props;
+const cat = CATEGORIES[category];
+---
+
+<a
+  href={`/category/${category}`}
+  class={`chip cat-tag ${className}`}
+  style={`--c: var(--cat-${category})`}
+>
+  {withEmoji && <span aria-hidden="true">{cat.emoji}</span>}
+  {cat.label}
+</a>

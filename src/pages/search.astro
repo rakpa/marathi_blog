@@ -1,0 +1,115 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { icon } from '@/lib/icons';
+---
+
+<BaseLayout title="शोधा" description="विद्यावरील लेख शोधा — विषय, शीर्षक किंवा कीवर्डनुसार." noindex={true}>
+  <section class="wrap search">
+    <h1 class="search__title">लेख शोधा</h1>
+    <div class="search__box">
+      <span class="search__icon" set:html={icon('search')} />
+      <input
+        id="q"
+        type="search"
+        placeholder="उदा. स्टार्टअप, गुंतवणूक, AI…"
+        autocomplete="off"
+        autofocus
+        aria-label="शोध शब्द"
+      />
+    </div>
+    <p id="status" class="search__status" aria-live="polite"></p>
+    <ul id="results" class="search__results"></ul>
+  </section>
+</BaseLayout>
+
+<script>
+  type Item = {
+    title: string; summary: string; url: string;
+    categoryLabel: string; emoji: string; tags: string[]; date: string;
+  };
+
+  const input = document.getElementById('q') as HTMLInputElement;
+  const results = document.getElementById('results')!;
+  const status = document.getElementById('status')!;
+  let data: Item[] = [];
+
+  const load = fetch('/search-index.json')
+    .then((r) => r.json())
+    .then((d: Item[]) => (data = d));
+
+  const norm = (s: string) => s.toLowerCase().normalize('NFC');
+
+  function render(items: Item[], q: string) {
+    if (!q) {
+      results.innerHTML = '';
+      status.textContent = `एकूण ${data.length} लेख. शोधण्यासाठी टाइप करा.`;
+      return;
+    }
+    if (!items.length) {
+      results.innerHTML = '';
+      status.textContent = `“${q}” साठी काही सापडलं नाही.`;
+      return;
+    }
+    status.textContent = `${items.length} लेख सापडले`;
+    results.innerHTML = items
+      .map(
+        (i) => `
+        <li class="search__item">
+          <a href="${i.url}">
+            <span class="search__cat">${i.emoji} ${i.categoryLabel}</span>
+            <span class="search__h">${i.title}</span>
+            <span class="search__s">${i.summary}</span>
+            <span class="search__d">${i.date}</span>
+          </a>
+        </li>`,
+      )
+      .join('');
+  }
+
+  function search(q: string) {
+    const n = norm(q.trim());
+    if (!n) return render([], '');
+    const hits = data.filter((i) => {
+      const hay = norm([i.title, i.summary, i.categoryLabel, ...i.tags].join(' '));
+      return n.split(/\s+/).every((t) => hay.includes(t));
+    });
+    render(hits, q.trim());
+  }
+
+  input.addEventListener('input', () => search(input.value));
+  load.then(() => {
+    search(input.value);
+    // Support /search?q=term deep links.
+    const params = new URLSearchParams(location.search);
+    const q = params.get('q');
+    if (q) { input.value = q; search(q); }
+  });
+</script>
+
+<style>
+  .search { padding-block: var(--space-2xl); max-width: 760px; }
+  .search__title { font-size: var(--step-3); margin-bottom: var(--space-l); }
+  .search__box {
+    display: flex; align-items: center; gap: 0.7rem;
+    border: 1.5px solid var(--border); border-radius: var(--radius-full);
+    padding: 0.3rem 1.2rem; background: var(--surface);
+  }
+  .search__box:focus-within { border-color: var(--brand); }
+  .search__icon { display: grid; color: var(--text-mute); }
+  .search__icon :global(svg) { width: 22px; height: 22px; }
+  #q { flex: 1; border: 0; background: transparent; padding: 0.8rem 0; font-size: var(--step-1); }
+  #q:focus-visible { outline: none; }
+  .search__status { color: var(--text-mute); font-family: var(--font-ui); font-size: var(--step--1); margin-block: var(--space-m); }
+  .search__results { list-style: none; padding: 0; display: grid; gap: 0.8rem; }
+  .search__item a {
+    display: grid; gap: 0.25rem; padding: var(--space-m);
+    border: 1px solid var(--border); border-radius: var(--radius-m);
+    background: var(--surface); text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+  }
+  .search__item a:hover { border-color: var(--brand); transform: translateX(3px); }
+  .search__cat { font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute); }
+  .search__h { font-family: var(--font-display); font-size: var(--step-1); color: var(--text); }
+  .search__s { color: var(--text-soft); font-size: var(--step-0); }
+  .search__d { font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute); }
+</style>

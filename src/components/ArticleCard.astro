@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import CategoryBadge from './CategoryBadge.astro';
+import { formatDateMr, isoDate, readingTimeMr } from '@/lib/format';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+  /** 'compact' drops the image (text list); 'wide' is a horizontal layout. */
+  variant?: 'default' | 'compact' | 'wide';
+  /** Lazy by default; set true for above-the-fold cards. */
+  eager?: boolean;
+}
+
+const { article, variant = 'default', eager = false } = Astro.props;
+const { data } = article;
+const href = `/articles/${article.id}`;
+const reading = readingTimeMr(article.body ?? '');
+---
+
+<article class={`card a-card a-card--${variant}`}>
+  {
+    variant !== 'compact' && data.heroImage && (
+      <a href={href} class="a-card__media" tabindex="-1" aria-hidden="true">
+        <Image
+          src={data.heroImage}
+          alt={data.heroImageAlt ?? ''}
+          widths={[320, 480, 720]}
+          sizes="(max-width: 640px) 90vw, 360px"
+          loading={eager ? 'eager' : 'lazy'}
+          class="a-card__img"
+        />
+      </a>
+    )
+  }
+  <div class="a-card__body">
+    <CategoryBadge category={data.category} />
+    <h3 class="a-card__title">
+      <a href={href}>{data.title}</a>
+    </h3>
+    <p class="a-card__summary">{data.summary}</p>
+    <div class="a-card__meta">
+      <time datetime={isoDate(data.publishDate)}>{formatDateMr(data.publishDate)}</time>
+      <span aria-hidden="true">·</span>
+      <span>{reading}</span>
+    </div>
+  </div>
+</article>
+
+<style>
+  .a-card { display: flex; flex-direction: column; height: 100%; }
+  .a-card__media { display: block; overflow: hidden; background: var(--surface-2); }
+  .a-card__img {
+    width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .a-card__img { transform: scale(1.04); }
+  .a-card__body {
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 0.6rem; padding: var(--space-m);
+  }
+  .a-card__title {
+    font-size: var(--step-1); line-height: 1.25; letter-spacing: -0.01em;
+  }
+  .a-card__title a { color: var(--text); text-decoration: none; }
+  .a-card__title a:hover { color: var(--brand); }
+  .a-card__summary {
+    color: var(--text-soft); font-size: var(--step-0); line-height: 1.6;
+    display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .a-card__meta {
+    margin-top: auto; display: flex; gap: 0.5rem; align-items: center;
+    font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute);
+  }
+
+  /* Wide / horizontal variant for the homepage secondary list. */
+  .a-card--wide { flex-direction: row; }
+  .a-card--wide .a-card__media { flex: 0 0 40%; }
+  .a-card--wide .a-card__img { height: 100%; aspect-ratio: auto; }
+  @media (max-width: 560px) {
+    .a-card--wide { flex-direction: column; }
+    .a-card--wide .a-card__media { flex: none; }
+    .a-card--wide .a-card__img { aspect-ratio: 16 / 9; }
+  }
+
+  .a-card--compact .a-card__title { font-size: var(--step-0); }
+</style>

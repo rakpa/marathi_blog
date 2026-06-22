@@ -1,0 +1,273 @@
+---
+import { Image } from 'astro:assets';
+import type { MarkdownHeading } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import CategoryBadge from '@/components/CategoryBadge.astro';
+import ShareButtons from '@/components/ShareButtons.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import { CATEGORIES } from '@/content.config';
+import { formatDateMr, isoDate, readingTimeMr } from '@/lib/format';
+import { SITE } from '@/site.config';
+
+interface Props {
+  article: CollectionEntry<'articles'>;
+  headings: MarkdownHeading[];
+  related: CollectionEntry<'articles'>[];
+}
+
+const { article, headings, related } = Astro.props;
+const { data } = article;
+const url = new URL(Astro.url.pathname, Astro.site).href;
+const reading = readingTimeMr(article.body ?? '');
+
+const TYPE_LABEL: Record<string, string> = {
+  report: 'वृत्त-विश्लेषण',
+  guide: 'मार्गदर्शक',
+  analysis: 'विश्लेषण',
+  opinion: 'मतप्रदर्शन',
+};
+
+const ogImage = data.heroImage
+  ? typeof data.heroImage === 'string'
+    ? data.heroImage
+    : data.heroImage.src
+  : undefined;
+
+// JSON-LD Article schema for rich results.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': data.type === 'opinion' ? 'OpinionNewsArticle' : 'Article',
+  headline: data.title,
+  description: data.summary,
+  inLanguage: 'mr-IN',
+  datePublished: isoDate(data.publishDate),
+  dateModified: isoDate(data.updated ?? data.publishDate),
+  author: { '@type': 'Organization', name: data.author },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: new URL('/favicon.svg', Astro.site).href },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  ...(ogImage ? { image: new URL(ogImage, Astro.site).href } : {}),
+  articleSection: CATEGORIES[data.category].en,
+};
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.summary}
+  image={ogImage}
+  type="article"
+  publishedTime={isoDate(data.publishDate)}
+  modifiedTime={isoDate(data.updated ?? data.publishDate)}
+  author={data.author}
+  jsonLd={jsonLd}
+>
+  <article class="article">
+    {/* ---- Header ---- */}
+    <header class="article__header wrap">
+      <div class="article__head-inner">
+        <div class="article__kicker">
+          <CategoryBadge category={data.category} />
+          <span class="article__type">{TYPE_LABEL[data.type]}</span>
+        </div>
+        <h1 class="article__title">{data.title}</h1>
+        <p class="article__summary">
+          <span class="article__why">का वाचावं</span>
+          {data.summary}
+        </p>
+        <div class="article__byline">
+          <div class="article__byline-meta">
+            <span class="article__author">{data.author}</span>
+            <span class="article__dates">
+              <time datetime={isoDate(data.publishDate)}>{formatDateMr(data.publishDate)}</time>
+              {data.updated && (
+                <span class="article__updated">
+                  · अद्ययावत {formatDateMr(data.updated)}
+                </span>
+              )}
+              · {reading}
+            </span>
+          </div>
+          <ShareButtons title={data.title} url={url} />
+        </div>
+      </div>
+    </header>
+
+    {/* ---- Hero image ---- */}
+    {
+      data.heroImage && (
+        <figure class="article__hero wrap">
+          <Image
+            src={data.heroImage}
+            alt={data.heroImageAlt ?? data.title}
+            widths={[480, 900, 1200, 1600]}
+            sizes="(max-width: 1180px) 100vw, 1180px"
+            loading="eager"
+            fetchpriority="high"
+            class="article__hero-img"
+          />
+          {data.heroCredit && <figcaption>{data.heroCredit}</figcaption>}
+        </figure>
+      )
+    }
+
+    {/* ---- Body: TOC + prose ---- */}
+    <div class="article__layout wrap">
+      <aside class="article__aside">
+        <TableOfContents headings={headings} />
+      </aside>
+
+      <div class="article__main">
+        {
+          data.takeaways.length > 0 && (
+            <aside class="takeaways" aria-label="मुख्य मुद्दे">
+              <p class="takeaways__title">मुख्य मुद्दे</p>
+              <ul>
+                {data.takeaways.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </aside>
+          )
+        }
+
+        <div class="prose">
+          <slot />
+        </div>
+
+        {/* ---- Sources ---- */}
+        {
+          data.sources.length > 0 && (
+            <section class="sources" aria-labelledby="src-h">
+              <h2 id="src-h" class="sources__title">संदर्भ व स्रोत</h2>
+              <ol>
+                {data.sources.map((s) => (
+                  <li>
+                    <a href={s.url} target="_blank" rel="noopener noreferrer nofollow">
+                      {s.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+              <p class="sources__note">
+                ही माहिती प्रकाशनाच्या वेळी ({formatDateMr(data.updated ?? data.publishDate)})
+                उपलब्ध विश्वासार्ह स्रोतांवर आधारित आहे. काही चूक आढळल्यास
+                <a href={`mailto:${SITE.email}`}> आम्हाला कळवा</a> — आम्ही ती पारदर्शकपणे दुरुस्त करू.
+              </p>
+            </section>
+          )
+        }
+
+        <footer class="article__foot">
+          <ShareButtons title={data.title} url={url} />
+        </footer>
+      </div>
+    </div>
+
+    {/* ---- Related + newsletter ---- */}
+    <div class="wrap article__after">
+      {
+        related.length > 0 && (
+          <section class="section">
+            <h2 class="section__title">हे सुद्धा वाचा</h2>
+            <div class="related-grid">
+              {related.map((a) => (
+                <ArticleCard article={a} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+      <Newsletter />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article { padding-block: var(--space-l); }
+
+  /* Header */
+  .article__head-inner { max-width: 80ch; margin-inline: auto; text-align: center; }
+  .article__kicker { display: flex; gap: 0.6rem; justify-content: center; align-items: center; margin-bottom: var(--space-s); }
+  .article__type {
+    font-family: var(--font-ui); font-size: var(--step--1); font-weight: 600;
+    color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .article__title { font-size: var(--step-4); letter-spacing: -0.015em; margin-bottom: var(--space-m); }
+  .article__summary {
+    font-family: var(--font-display); font-size: var(--step-1); line-height: 1.55;
+    color: var(--text-soft); max-width: 60ch; margin-inline: auto;
+    text-align: start; padding: var(--space-m) var(--space-l);
+    background: var(--surface-2); border-radius: var(--radius-m);
+    border-inline-start: 4px solid var(--brand);
+  }
+  .article__why {
+    display: block; font-family: var(--font-ui); font-size: var(--step--1);
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--brand); margin-bottom: 0.3rem;
+  }
+  .article__byline {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: var(--space-m); flex-wrap: wrap; margin-top: var(--space-l);
+    padding-block: var(--space-m); border-block: 1px solid var(--border);
+    text-align: start;
+  }
+  .article__author { font-family: var(--font-ui); font-weight: 700; color: var(--text); }
+  .article__dates { display: block; font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute); }
+
+  /* Hero */
+  .article__hero { margin-block: var(--space-l); }
+  .article__hero-img { width: 100%; max-height: 560px; object-fit: cover; border-radius: var(--radius-l); box-shadow: var(--shadow-m); }
+  .article__hero figcaption { text-align: center; font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute); margin-top: 0.7rem; }
+
+  /* Layout */
+  .article__layout {
+    display: grid; grid-template-columns: 220px minmax(0, var(--content-width));
+    gap: var(--space-2xl); justify-content: center; align-items: start;
+    margin-top: var(--space-xl);
+  }
+  .article__aside { position: relative; }
+  .article__main { min-width: 0; }
+
+  /* Takeaways box */
+  .takeaways {
+    background: color-mix(in srgb, var(--brand) 8%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--border));
+    border-radius: var(--radius-l); padding: var(--space-m) var(--space-l);
+    margin-bottom: var(--space-l);
+  }
+  .takeaways__title {
+    font-family: var(--font-ui); font-weight: 700; font-size: var(--step--1);
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--brand);
+    margin-bottom: 0.7rem;
+  }
+  .takeaways ul { padding-inline-start: 1.2em; display: grid; gap: 0.5rem; }
+  .takeaways li { color: var(--text); }
+  .takeaways li::marker { content: '✓  '; color: var(--brand); font-weight: 700; }
+
+  /* Sources */
+  .sources { margin-top: var(--space-2xl); padding-top: var(--space-l); border-top: 2px solid var(--border); }
+  .sources__title { font-size: var(--step-1); margin-bottom: var(--space-s); }
+  .sources ol { padding-inline-start: 1.4em; display: grid; gap: 0.5rem; color: var(--text-soft); }
+  .sources a { color: var(--link); }
+  .sources__note { margin-top: var(--space-m); font-size: var(--step--1); color: var(--text-mute); line-height: 1.6; }
+
+  .article__foot { margin-top: var(--space-xl); padding-top: var(--space-l); border-top: 1px solid var(--border); }
+
+  /* After */
+  .article__after { margin-top: var(--space-3xl); display: grid; gap: var(--space-2xl); }
+  .section__title { font-size: var(--step-2); margin-bottom: var(--space-l); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-l); }
+  @media (max-width: 820px) { .related-grid { grid-template-columns: 1fr; } }
+
+  /* Responsive: hide TOC sidebar on narrow screens */
+  @media (max-width: 1000px) {
+    .article__layout { grid-template-columns: minmax(0, var(--content-width)); }
+    .article__aside { display: none; }
+  }
+</style>

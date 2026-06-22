@@ -1,0 +1,80 @@
+---
+import { SITE, NAV } from '@/site.config';
+import { toMarathiDigits } from '@/lib/format';
+const year = toMarathiDigits(new Date().getFullYear());
+---
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" class="brand">
+        <span class="brand__mark" aria-hidden="true">वि</span>
+        <span class="brand__name">{SITE.name}</span>
+      </a>
+      <p class="site-footer__tag">{SITE.tagline}</p>
+      <p class="site-footer__desc">
+        महत्त्वाकांक्षी मराठी वाचकांसाठी विश्वासार्ह, सखोल आणि उपयुक्त लेखन.
+      </p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="विभाग">
+      <h2 class="site-footer__h">विभाग</h2>
+      <ul>
+        {NAV.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav class="site-footer__nav" aria-label="विद्याबद्दल">
+      <h2 class="site-footer__h">विद्या</h2>
+      <ul>
+        <li><a href="/about">आमच्याबद्दल</a></li>
+        <li><a href="/about#workflow">संपादकीय प्रक्रिया</a></li>
+        <li><a href="/rss.xml">RSS फीड</a></li>
+        <li><a href={`mailto:${SITE.email}`}>संपर्क</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="wrap site-footer__bottom">
+    <p>© {year} {SITE.name}. सर्व हक्क राखीव.</p>
+    <p>दर्जा, संख्येपेक्षा महत्त्वाचा. 🌱</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-3xl);
+    background: var(--surface); border-top: 1px solid var(--border);
+  }
+  .site-footer__inner {
+    display: grid; gap: var(--space-xl);
+    grid-template-columns: 1.6fr 1fr 1fr;
+    padding-block: var(--space-2xl) var(--space-l);
+  }
+  .brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+  .brand__mark {
+    display: grid; place-items: center; width: 36px; height: 36px;
+    background: var(--brand); color: #fff; border-radius: 10px;
+    font-family: var(--font-display); padding-top: 2px;
+  }
+  .brand__name { font-family: var(--font-display); font-size: 1.6rem; color: var(--text); }
+  .site-footer__tag { font-family: var(--font-display); font-size: var(--step-1); margin-top: 0.8rem; color: var(--text); }
+  .site-footer__desc { color: var(--text-mute); max-width: 38ch; margin-top: 0.4rem; }
+  .site-footer__h {
+    font-family: var(--font-ui); font-size: var(--step--1); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mute);
+    margin-bottom: 0.8rem;
+  }
+  .site-footer__nav ul { list-style: none; padding: 0; display: grid; gap: 0.55rem; }
+  .site-footer__nav a { color: var(--text-soft); text-decoration: none; }
+  .site-footer__nav a:hover { color: var(--brand); }
+  .site-footer__bottom {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    padding-block: var(--space-m); border-top: 1px solid var(--border);
+    font-family: var(--font-ui); font-size: var(--step--1); color: var(--text-mute);
+  }
+  @media (max-width: 760px) {
+    .site-footer__inner { grid-template-columns: 1fr 1fr; }
+    .site-footer__brand { grid-column: 1 / -1; }
+  }
+</style>
