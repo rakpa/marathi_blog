@@ -15,10 +15,6 @@ takeaways:
   - "Claude: लांबलचक दस्तऐवज, अचूक सूचना-पालन आणि स्वच्छ लेखनासाठी सर्वोत्तम; प्रचंड मोठा ‘कॉन्टेक्स्ट विंडो’."
   - "Gemini: तुम्ही Google Workspace (Gmail, Docs, Sheets) मध्ये राहत असाल, तर सर्वांत सोयीचं."
 sources:
-  - title: "ChatGPT vs Claude vs Gemini: Which AI Platform Is Best for Business in 2026 — MindStudio"
-    url: "https://www.mindstudio.ai/blog/chatgpt-vs-claude-vs-gemini-2026"
-  - title: "Best AI Assistants Comparison: ChatGPT, Gemini, Copilot, Claude, Perplexity, Grok — Gmelius"
-    url: "https://gmelius.com/blog/best-ai-assistants-comparison"
   - title: "Claude vs ChatGPT vs Copilot vs Gemini: 2026 Enterprise Guide — IntuitionLabs"
     url: "https://intuitionlabs.ai/articles/claude-vs-chatgpt-vs-copilot-vs-gemini-enterprise-comparison"
   - title: "The 4 best ChatGPT alternatives in 2026 — Zapier"

@@ -19,8 +19,6 @@ sources:
     url: "https://www.outlookmoney.com/invest/mutual-funds/mutual-funds-2025-in-numbers-record-flows-sip-highs-the-2026-outlook"
   - title: "Total amount collected through SIP — AMFI (Association of Mutual Funds in India)"
     url: "https://www.amfiindia.com/articles/mutual-fund"
-  - title: "SIP Inflows Ease In February 2026; Mutual Fund AUM Reaches Record — Samco"
-    url: "https://www.samco.in/knowledge-center/articles/sip-inflows-ease-in-february-2026-but-aum-hits-record-%E2%82%B916-64-lakh-crore/"
 ---
 
 कल्पना करा — दर महिन्याला तुम्ही एका OTT सबस्क्रिप्शनपेक्षाही कमी पैसे बाजूला ठेवता, आणि वीस वर्षांनी त्याचे लाखो रुपये होतात. ही जादू नाही; ही **SIP** आणि **कम्पाउंडिंग** यांची ताकद आहे. आणि भारतीय आता ही ताकद मोठ्या प्रमाणावर वापरायला शिकले आहेत.

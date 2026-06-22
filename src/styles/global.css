@@ -9,10 +9,12 @@
   --font-display: 'Tiro Devanagari Marathi', 'Noto Serif Devanagari', Georgia, serif;
   --font-body: 'Mukta', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
   --font-ui: 'Mukta', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  /* Reading font for long-form article bodies — a clean, highly legible
-     Devanagari sans matching the modern Marathi news-reading tone (e.g.
-     Dailyhunt-style portals). Real weights for crisp bold. */
-  --font-reading: 'Noto Sans Devanagari', 'Mukta', system-ui, -apple-system, sans-serif;
+  /* Reading font for long-form article bodies. System-Devanagari-first so the
+     text renders in the device's native font — exactly like Marathi news apps
+     (Dailyhunt etc.): iOS → Kohinoor Devanagari, Android → Noto Sans
+     Devanagari, with web-loaded Mukta as a consistent desktop fallback. */
+  --font-reading: 'Kohinoor Devanagari', 'Devanagari Sangam MN', 'Noto Sans Devanagari',
+    'Mukta', system-ui, -apple-system, sans-serif;
 
   /* ---- Modular type scale (1.250 — major third) -------------------------- */
   --step--1: clamp(0.86rem, 0.82rem + 0.18vw, 0.97rem);

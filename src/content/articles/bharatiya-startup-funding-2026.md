@@ -22,8 +22,6 @@ sources:
     url: "https://www.indexbox.io/blog/india-startup-funding-2025-105b-raised-early-stage-resilient-ai-lags-behind-us/"
   - title: "Annual Indian Startup Trends Report, 2025 — Inc42"
     url: "https://inc42.com/reports/annual-indian-startup-trends-report-2025/"
-  - title: "India Startup Ecosystem 2026: Funding Trends — Value Add VC"
-    url: "https://valueaddvc.com/blog/india-startup-ecosystem-2026-funding-trends-top-investors-and-breakout-companies"
 ---
 
 काही वर्षांपूर्वीची गोष्ट आठवते का? रोज सकाळी एखाद्या स्टार्टअपने "मेगा राउंड" उभा केल्याची बातमी यायची, युनिकॉर्न्सची संख्या मोजता मोजता दमछाक व्हायची, आणि "ग्रोथ" हाच एकमेव मंत्र होता. २०२६ मधलं चित्र वेगळं आहे — आणि ते अधिक आरोग्यदायी आहे.
