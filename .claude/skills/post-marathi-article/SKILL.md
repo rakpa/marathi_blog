@@ -81,8 +81,9 @@ credible source qualifies, leave `sources` empty.
 - Commit and push so the live site redeploys:
   - `git add src/content/articles src/assets`
   - `git commit -m "Publish: N new Marathi articles"`
-  - Push to the current branch. (If on `main`, that's fine; otherwise push to
-    the working branch.)
+  - **Always commit and push to the `main` branch** (`git push origin main`) so
+    Vercel deploys. If not already on `main`, switch to it first
+    (`git checkout main && git pull origin main`).
 - Report to the user:
   - **How many articles you posted this run** (must be 4–5).
   - A short list — title, category, slug, sources — for each.
