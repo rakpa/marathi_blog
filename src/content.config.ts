@@ -13,6 +13,7 @@ export const CATEGORIES = {
   learning:         { label: 'शिक्षण व कौशल्ये', en: 'Learning & Skills', emoji: '🧠', color: '#7c3aed' },
   entrepreneurship: { label: 'उद्योजकता',        en: 'Entrepreneurship',  emoji: '🌱', color: '#0e7490' },
   education:        { label: 'करिअर व शिक्षण',   en: 'Education',         emoji: '🎓', color: '#b45309' },
+  sports:           { label: 'क्रीडा',            en: 'Sports',            emoji: '🏅', color: '#c2255c' },
 } as const;
 
 export type CategoryId = keyof typeof CATEGORIES;

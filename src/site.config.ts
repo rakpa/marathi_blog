@@ -20,4 +20,5 @@ export const NAV = [
   { label: 'कौशल्ये', href: '/category/learning' },
   { label: 'उद्योजकता', href: '/category/entrepreneurship' },
   { label: 'करिअर', href: '/category/education' },
+  { label: 'क्रीडा', href: '/category/sports' },
 ] as const;

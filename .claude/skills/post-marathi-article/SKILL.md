@@ -40,7 +40,9 @@ Editorial rules:
 - End with a practical **"पुढचं पाऊल"** (so-what / next step) paragraph.
 
 ## 3. Categories (pick exactly one `id`)
-`business`, `technology`, `startups`, `learning`, `entrepreneurship`, `education`.
+`business`, `technology`, `startups`, `learning`, `entrepreneurship`, `education`, `sports`.
+For `sports`, prefer inspiring achievement stories (wins, records, comebacks) —
+not gossip or controversy.
 
 ## 4. Save the file
 - Choose an ASCII kebab-case **slug** (e.g. `india-upi-credit-line`).

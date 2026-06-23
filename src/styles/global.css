@@ -60,6 +60,7 @@
   --cat-learning: #7c3aed;
   --cat-entrepreneurship: #0e7490;
   --cat-education: #b45309;
+  --cat-sports: #c2255c;
 
   /* ---- Light theme palette ---------------------------------------------- */
   --bg: #fbf9f4;            /* warm paper */
@@ -98,6 +99,7 @@
   --cat-learning: #c4a6ff;
   --cat-entrepreneurship: #4fc7e0;
   --cat-education: #f0b35a;
+  --cat-sports: #f783ac;
 }
 
 /* ---- Reset --------------------------------------------------------------- */

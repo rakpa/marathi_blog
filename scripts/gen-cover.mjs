@@ -17,6 +17,7 @@ const COLORS = {
   learning: ['#7c3aed', '#2e1065', '🧠'],
   entrepreneurship: ['#0e7490', '#073b49', '🌱'],
   education: ['#b45309', '#5c2c05', '🎓'],
+  sports: ['#c2255c', '#6b1438', '🏅'],
 };
 
 const slug = process.argv[2];
