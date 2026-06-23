@@ -1,20 +1,24 @@
 ---
 name: post-marathi-article
-description: Research the web and publish one new विद्या Marathi article. Use when the user wants to create/post a new article for the marathi_blog magazine — either on a topic they name, or on the latest India business/technology/startup news if they don't. Searches the web, fact-checks, writes flowing Marathi, generates a cover, saves the Markdown, builds, and commits.
+description: Research the web and publish 4–5 new विद्या Marathi articles. Use when the user wants to create/post new articles for the marathi_blog magazine — either on topics they name, or on the latest India business/technology/startup news if they don't. Searches the web, fact-checks, writes flowing Marathi, generates covers, saves the Markdown, builds, and commits.
 ---
 
-# Publish a विद्या Marathi article
+# Publish विद्या Marathi articles
 
 You are acting as the senior editor of **विद्या**, a premium Marathi knowledge
-magazine. This skill produces and publishes ONE high-quality article using your
-own web search — no external API. Work end to end without stopping to ask
-unless something is genuinely ambiguous.
+magazine. This skill produces and publishes **4–5 high-quality articles per
+invocation** (minimum 4) using your own web search — no external API. Work end
+to end without stopping to ask unless something is genuinely ambiguous.
 
-## 0. Pick the topic
-- If the user gave a topic/headline in the command args, use that.
+## 0. Pick 4–5 topics
+- If the user named specific topics, use those (and top up to at least 4 with
+  fresh news if they named fewer).
 - Otherwise, use **WebSearch** to find the latest, most valuable India-relevant
-  story in विद्या's beats (business, technology, startups). Pick the single most
-  useful, in-scope item.
+  stories in विद्या's beats. Pick **4–5 distinct stories** — spread them across
+  different categories where possible (e.g. business, technology, startups), and
+  make sure they don't duplicate each other or anything already in
+  `src/content/articles/`.
+- Then do steps 1–4 below **for each** of the 4–5 articles.
 
 ## 1. Research & fact-check (do this thoroughly)
 - Use **WebSearch** broadly, then **WebFetch** the most credible source pages.
@@ -69,19 +73,23 @@ heroCredit: "चित्र: विद्या ग्राफिक्स"
 organisations. **Never link to blogs or marketing/promotional sites.** If no
 credible source qualifies, leave `sources` empty.
 
-## 5. Verify & publish
-- Run `npm run build` and confirm it succeeds (no errors).
+## 5. Verify & publish (once, after all 4–5 are written)
+- **Use a full date+time `publishDate`** (ISO 8601 with IST offset) for every
+  article, and **stagger the times a few minutes apart** so they sort cleanly to
+  the top of the homepage (newest first).
+- Run `npm run build` once and confirm it succeeds (no errors).
 - Commit and push so the live site redeploys:
   - `git add src/content/articles src/assets`
-  - `git commit -m "Publish: <title>"`
+  - `git commit -m "Publish: N new Marathi articles"`
   - Push to the current branch. (If on `main`, that's fine; otherwise push to
     the working branch.)
-- **Use a full date+time `publishDate`** (ISO 8601 with IST offset) so this post
-  sorts to the **top of the homepage** ahead of same-day articles.
-- Report to the user: the title, category, slug, the sources used, **and the
-  total number of published articles now on the site** (count the `.md` files
-  in `src/content/articles/`). State it as "Total articles now: N".
+- Report to the user:
+  - **How many articles you posted this run** (must be 4–5).
+  - A short list — title, category, slug, sources — for each.
+  - **The total number of published articles now on the site** (count the `.md`
+    files in `src/content/articles/`). State it as "Total articles now: N".
 
 ## Notes
 - If the user says "draft only", do everything except commit/push.
-- One article per invocation unless the user asks for more.
+- **Publish 4–5 articles per invocation by default (never fewer than 4)** unless
+  the user explicitly names a different number.
