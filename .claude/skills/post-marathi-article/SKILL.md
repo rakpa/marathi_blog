@@ -50,7 +50,7 @@ title: "बलवान मराठी शीर्षक"
 summary: "एक-ओळीचा 'का वाचावं' सारांश"
 category: business        # one of the six ids above
 type: report              # report | analysis | guide | opinion
-publishDate: <YYYY-MM-DD, today>
+publishDate: <full ISO 8601 timestamp with IST offset, e.g. 2026-06-23T16:45:00+05:30>
 tags: ["टॅग१", "टॅग२"]
 takeaways:
   - "मुख्य मुद्दा १"
@@ -76,7 +76,11 @@ credible source qualifies, leave `sources` empty.
   - `git commit -m "Publish: <title>"`
   - Push to the current branch. (If on `main`, that's fine; otherwise push to
     the working branch.)
-- Report to the user: the title, category, slug, and the sources used.
+- **Use a full date+time `publishDate`** (ISO 8601 with IST offset) so this post
+  sorts to the **top of the homepage** ahead of same-day articles.
+- Report to the user: the title, category, slug, the sources used, **and the
+  total number of published articles now on the site** (count the `.md` files
+  in `src/content/articles/`). State it as "Total articles now: N".
 
 ## Notes
 - If the user says "draft only", do everything except commit/push.

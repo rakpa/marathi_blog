@@ -10,8 +10,9 @@ import { formatDateMr, isoDate, readingTimeMr } from '@/lib/format';
 import { SITE } from '@/site.config';
 
 const articles = await getPublishedArticles();
-const featured = articles.find((a) => a.data.featured) ?? articles[0];
-const rest = articles.filter((a) => a.id !== featured?.id);
+// Newest article (by date + time) always leads the homepage as the hero.
+const featured = articles[0];
+const rest = articles.slice(1);
 const topStories = rest.slice(0, 4);
 const more = rest.slice(4);
 
