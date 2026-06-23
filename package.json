@@ -3,6 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "description": "विद्या — a premium Marathi-language digital magazine for ambitious, curious readers.",
+  "engines": {
+    "node": ">=20.3.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
