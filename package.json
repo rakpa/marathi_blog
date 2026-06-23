@@ -8,9 +8,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "auto-publish": "node scripts/auto-publish.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.6.1",
