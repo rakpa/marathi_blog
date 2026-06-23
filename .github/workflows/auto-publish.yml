@@ -1,0 +1,48 @@
+name: Auto-publish Marathi news
+
+# Runs every 30 minutes (and on demand). NOTE: GitHub only runs scheduled
+# workflows from the repository's DEFAULT branch — merge this file to the
+# default branch for the cron to fire. Until then, use "Run workflow" manually.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+# Prevent overlapping runs from racing on the same files.
+concurrency:
+  group: auto-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Generate & publish article(s)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MAX_PUBLISH_PER_RUN: '1'
+        run: npm run auto-publish
+
+      - name: Commit & push if anything was published
+        run: |
+          git config user.name "विद्या autobot"
+          git config user.email "actions@github.com"
+          git add src/content/articles src/assets scripts/auto-publish-state.json
+          if git diff --cached --quiet; then
+            echo "No new articles this run."
+          else
+            git commit -m "Auto-publish: new Marathi article(s) [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
