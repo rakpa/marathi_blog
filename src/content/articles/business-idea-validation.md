@@ -1,6 +1,7 @@
 ---
 title: "व्यवसाय सुरू करण्याआधी: तुमची कल्पना खरंच चालेल का?"
 summary: "महिने मेहनत आणि पैसा घालवल्यावर 'हे कुणाला नकोच होतं' हे कळणं वेदनादायक. तसं होऊ नये म्हणून, कल्पना आधीच तपासण्याच्या काही सोप्या पद्धती."
+heroImageUrl: "https://loremflickr.com/1200/675/startup,idea,whiteboard?lock=46"
 category: entrepreneurship
 type: guide
 author: "विद्या संपादकीय"

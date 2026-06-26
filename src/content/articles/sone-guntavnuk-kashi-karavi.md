@@ -14,6 +14,7 @@ sources:
     url: "https://www.businesstoday.in/personal-finance/investment/story/gold-silver-rates-on-june-23-live-check-latest-prices-for-24k-22k-18k-in-delhi-mumbai-chennai-kolkata-538576-2026-06-23"
 heroImageAlt: "सोन्याची नाणी आणि गुंतवणुकीचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/sone-guntavnuk-kashi-karavi.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/gold,jewellery,investment?lock=242"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

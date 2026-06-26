@@ -11,6 +11,7 @@ takeaways:
   - "फोन दूर ठेवणं आणि ठरावीक वेळ अखंड कामासाठी राखणं — हीच सुरुवात."
 heroImageAlt: "एकाग्रतेने काम करण्याचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/deep-work-ekagrata.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/focus,desk,study?lock=81"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

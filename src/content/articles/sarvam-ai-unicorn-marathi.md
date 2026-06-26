@@ -16,6 +16,7 @@ sources:
     url: "https://www.businesstoday.in/technology/story/sarvam-ai-becomes-unicorn-with-234-million-funding-hcltech-leads-with-150-million-537017-2026-06-15"
 heroImageAlt: "भारतीय सार्वभौम AI स्टार्टअपचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/sarvam-ai-unicorn-marathi.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/artificial-intelligence,india,technology?lock=221"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

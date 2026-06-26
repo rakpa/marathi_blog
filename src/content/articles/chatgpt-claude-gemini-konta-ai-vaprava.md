@@ -7,6 +7,7 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-21
 tags: ["AI", "उत्पादकता", "टूल्स", "ChatGPT", "Claude", "Gemini"]
 heroImage: ../../assets/cover-ai-tools.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/artificial-intelligence,robot,laptop?lock=60"
 heroImageAlt: "कृत्रिम बुद्धिमत्तेचं आणि डिजिटल संवादाचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

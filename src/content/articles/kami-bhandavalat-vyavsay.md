@@ -7,6 +7,7 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-03
 tags: ["उद्योजकता", "बूटस्ट्रॅपिंग", "छोटा व्यवसाय"]
 heroImage: ../../assets/cover-low-capital.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/small-business,shop,entrepreneur?lock=165"
 heroImageAlt: "छोट्या रोपट्यापासून सुरुवात होणाऱ्या व्यवसायाचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

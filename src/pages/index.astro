@@ -25,7 +25,16 @@ const cats = Object.keys(CATEGORIES) as (keyof typeof CATEGORIES)[];
     featured && (
       <section class="hero wrap">
         <a href={`/articles/${featured.id}`} class="hero__media">
-          {featured.data.heroImage && (
+          {featured.data.heroImageUrl ? (
+            <img
+              src={featured.data.heroImageUrl}
+              alt={featured.data.heroImageAlt ?? ''}
+              loading="eager"
+              fetchpriority="high"
+              class="hero__img"
+              onerror={`this.onerror=null;this.src='/covers/cat-${featured.data.category}.jpg'`}
+            />
+          ) : featured.data.heroImage ? (
             <Image
               src={featured.data.heroImage}
               alt={featured.data.heroImageAlt ?? ''}
@@ -35,7 +44,7 @@ const cats = Object.keys(CATEGORIES) as (keyof typeof CATEGORIES)[];
               fetchpriority="high"
               class="hero__img"
             />
-          )}
+          ) : null}
         </a>
         <div class="hero__body">
           <p class="eyebrow">आजचा मुख्य लेख</p>

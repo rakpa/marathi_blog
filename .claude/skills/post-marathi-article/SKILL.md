@@ -46,15 +46,20 @@ not gossip or controversy.
 
 ## 4. Save the file
 - Choose an ASCII kebab-case **slug** (e.g. `india-upi-credit-line`).
-- Generate the cover image:
-  `node scripts/gen-cover.mjs <slug> <category>`
+- **Feature image:** set `heroImageUrl` to a **topical real photo** matched to
+  the article, using English keywords:
+  `https://loremflickr.com/1200/675/<keyword1>,<keyword2>?lock=<any-number>`
+  (e.g. for SpaceX: `rocket,spacex,launch`). The site automatically falls back
+  to a per-category gradient (`/public/covers/cat-<category>.jpg`) if the photo
+  fails to load, so no per-article cover file is needed. (The category fallback
+  covers are generated once via `node scripts/gen-cat-covers.mjs`.)
 - Write `src/content/articles/<slug>.md` with this frontmatter, then the body:
 
 ```yaml
 ---
 title: "बलवान मराठी शीर्षक"
 summary: "एक-ओळीचा 'का वाचावं' सारांश"
-category: business        # one of the six ids above
+category: business        # one of the seven ids above
 type: report              # report | analysis | guide | opinion
 publishDate: <full ISO 8601 timestamp with IST offset, e.g. 2026-06-23T16:45:00+05:30>
 tags: ["टॅग१", "टॅग२"]
@@ -65,9 +70,9 @@ takeaways:
 sources:
   - title: "विश्वासार्ह वृत्तसंस्थेचं नाव"
     url: "https://..."
-heroImage: ../../assets/<slug>.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/<english-keywords>?lock=<n>"
 heroImageAlt: "प्रतिमेचं वर्णन"
-heroCredit: "चित्र: विद्या ग्राफिक्स"
+heroCredit: "चित्र"
 ---
 ```
 

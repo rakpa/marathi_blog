@@ -33,8 +33,11 @@ const articles = defineCollection({
       // ISO dates. `updated` is optional and shown when an article is revised.
       publishDate: z.coerce.date(),
       updated: z.coerce.date().optional(),
-      // Hero image: either a local asset (optimised) or a remote URL string.
+      // Hero image: a topical remote photo (heroImageUrl) is preferred; the
+      // local generated cover (heroImage) and the per-category gradient in
+      // /public/covers act as automatic fallbacks.
       heroImage: image().optional(),
+      heroImageUrl: z.string().url().optional(),
       heroImageAlt: z.string().optional(),
       heroCredit: z.string().optional(),
       featured: z.boolean().default(false),

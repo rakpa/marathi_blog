@@ -17,6 +17,7 @@ sources:
   - title: "Transforming India with AI: ₹10,300 crore mission, GPUs & a vision — DD News"
     url: "https://ddnews.gov.in/en/transforming-india-with-ai-rs-10300-crore-mission-38000-gpus-a-vision-for-inclusive-growth/"
 heroImage: ../../assets/indiaai-mission-gpu-compute.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/datacenter,server,technology?lock=151"
 heroImageAlt: "AI डेटा सेंटर आणि GPU संगणकीय ताकदीचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---

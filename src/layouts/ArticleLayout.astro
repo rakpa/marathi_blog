@@ -100,17 +100,28 @@ const jsonLd = {
 
     {/* ---- Hero image ---- */}
     {
-      data.heroImage && (
+      (data.heroImageUrl || data.heroImage) && (
         <figure class="article__hero wrap">
-          <Image
-            src={data.heroImage}
-            alt={data.heroImageAlt ?? data.title}
-            widths={[480, 900, 1200, 1600]}
-            sizes="(max-width: 1180px) 100vw, 1180px"
-            loading="eager"
-            fetchpriority="high"
-            class="article__hero-img"
-          />
+          {data.heroImageUrl ? (
+            <img
+              src={data.heroImageUrl}
+              alt={data.heroImageAlt ?? data.title}
+              loading="eager"
+              fetchpriority="high"
+              class="article__hero-img"
+              onerror={`this.onerror=null;this.src='/covers/cat-${data.category}.jpg'`}
+            />
+          ) : (
+            <Image
+              src={data.heroImage!}
+              alt={data.heroImageAlt ?? data.title}
+              widths={[480, 900, 1200, 1600]}
+              sizes="(max-width: 1180px) 100vw, 1180px"
+              loading="eager"
+              fetchpriority="high"
+              class="article__hero-img"
+            />
+          )}
           {data.heroCredit && <figcaption>{data.heroCredit}</figcaption>}
         </figure>
       )

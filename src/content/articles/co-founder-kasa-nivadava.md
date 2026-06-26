@@ -11,6 +11,7 @@ takeaways:
   - "हिस्सेवाटप, भूमिका आणि मतभेद कसे सोडवायचे — हे सुरुवातीलाच लेखी ठरवा."
 heroImageAlt: "दोन सह-संस्थापकांच्या भागीदारीचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/co-founder-kasa-nivadava.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/partnership,handshake,team?lock=67"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

@@ -7,6 +7,7 @@ author: "विद्या संपादकीय"
 publishDate: 2026-05-30
 tags: ["किंमत", "नफा", "विक्री", "उद्योजकता"]
 heroImage: ../../assets/cover-pricing.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/price,shopping,tag?lock=172"
 heroImageAlt: "किमतीचं संतुलन दाखवणारं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

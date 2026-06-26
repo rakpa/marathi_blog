@@ -11,6 +11,7 @@ takeaways:
   - "सर्वात मोठं संरक्षण म्हणजे शंका घेणं — विशेषतः पैसे किंवा घाई मागणाऱ्या संदेशांवर."
 heroImageAlt: "डीपफेक आणि डिजिटल बनावटगिरीचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/deepfake-kase-olkhave.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/face,technology,digital?lock=88"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

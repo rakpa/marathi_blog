@@ -11,6 +11,7 @@ takeaways:
   - "प्रत्येक IPO मध्ये अर्ज करणं म्हणजे गुंतवणूक नव्हे; कंपनी समजून घेऊनच निर्णय घ्या."
 heroImageAlt: "IPO आणि शेअर बाजारातल्या गर्दीचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/ipo-gmp-samjun-ghya.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/stock-market,trading,finance?lock=158"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

@@ -20,16 +20,26 @@ const reading = readingTimeMr(article.body ?? '');
 
 <article class={`card a-card a-card--${variant}`}>
   {
-    variant !== 'compact' && data.heroImage && (
+    variant !== 'compact' && (data.heroImageUrl || data.heroImage) && (
       <a href={href} class="a-card__media" tabindex="-1" aria-hidden="true">
-        <Image
-          src={data.heroImage}
-          alt={data.heroImageAlt ?? ''}
-          widths={[320, 480, 720]}
-          sizes="(max-width: 640px) 90vw, 360px"
-          loading={eager ? 'eager' : 'lazy'}
-          class="a-card__img"
-        />
+        {data.heroImageUrl ? (
+          <img
+            src={data.heroImageUrl}
+            alt={data.heroImageAlt ?? ''}
+            loading={eager ? 'eager' : 'lazy'}
+            class="a-card__img"
+            onerror={`this.onerror=null;this.src='/covers/cat-${data.category}.jpg'`}
+          />
+        ) : (
+          <Image
+            src={data.heroImage!}
+            alt={data.heroImageAlt ?? ''}
+            widths={[320, 480, 720]}
+            sizes="(max-width: 640px) 90vw, 360px"
+            loading={eager ? 'eager' : 'lazy'}
+            class="a-card__img"
+          />
+        )}
       </a>
     )
   }

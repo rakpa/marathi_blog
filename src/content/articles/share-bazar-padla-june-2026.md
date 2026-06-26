@@ -14,6 +14,7 @@ sources:
     url: "https://www.business-standard.com/markets/news/stock-market-live-june-23-nse-bse-sensex-today-nifty-gift-nifty-brent-crude-it-stocks-ipo-126062300108_1.html"
 heroImageAlt: "खाली जाणाऱ्या शेअर बाजाराच्या आलेखाचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/share-bazar-padla-june-2026.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/stock-market,chart,trading?lock=228"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

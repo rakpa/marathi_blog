@@ -11,6 +11,7 @@ takeaways:
   - "प्रत्येक नोकरीसाठी रिझ्युमे थोडा बदला — एकच साचा सगळीकडे पाठवू नका."
 heroImageAlt: "रिझ्युमे आणि करिअरचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/resume-kasa-lihava.jpg
+heroImageUrl: "https://loremflickr.com/1200/675/resume,cv,desk?lock=214"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 
