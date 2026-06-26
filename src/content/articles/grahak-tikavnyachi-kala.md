@@ -11,7 +11,6 @@ takeaways:
   - "अपेक्षेपेक्षा थोडी जास्त सेवा आणि तक्रारींची प्रामाणिक हाताळणी — हीच निष्ठेची गुरुकिल्ली."
 heroImageAlt: "समाधानी ग्राहक आणि व्यवसायाच्या नात्याचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/grahak-tikavnyachi-kala.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/customer,shop,service?lock=130"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

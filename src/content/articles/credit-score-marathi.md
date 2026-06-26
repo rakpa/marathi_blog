@@ -11,7 +11,6 @@ takeaways:
   - "वेळेवर हप्ते भरणं हा स्कोअर सुधारण्याचा सर्वात मोठा घटक."
   - "७५० च्या वर स्कोअर असेल तर कर्ज सहज आणि कमी व्याजदराला मिळण्याची शक्यता वाढते."
 heroImage: ../../assets/credit-score-marathi.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/credit-card,finance?lock=74"
 heroImageAlt: "क्रेडिट स्कोअर मीटरचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---

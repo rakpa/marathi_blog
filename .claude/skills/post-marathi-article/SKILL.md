@@ -46,13 +46,12 @@ not gossip or controversy.
 
 ## 4. Save the file
 - Choose an ASCII kebab-case **slug** (e.g. `india-upi-credit-line`).
-- **Feature image:** set `heroImageUrl` to a **topical real photo** matched to
-  the article, using English keywords:
-  `https://loremflickr.com/1200/675/<keyword1>,<keyword2>?lock=<any-number>`
-  (e.g. for SpaceX: `rocket,spacex,launch`). The site automatically falls back
-  to a per-category gradient (`/public/covers/cat-<category>.jpg`) if the photo
-  fails to load, so no per-article cover file is needed. (The category fallback
-  covers are generated once via `node scripts/gen-cat-covers.mjs`.)
+- **Feature image:** generate a polished, topic-specific illustration cover with
+  a relevant emoji motif:
+  `node scripts/gen-cover.mjs <slug> <category> "<emoji>"`
+  (e.g. `node scripts/gen-cover.mjs elon-spacex business "🚀"`). Pick a single
+  colour emoji that fits the topic. Then reference it as
+  `heroImage: ../../assets/<slug>.jpg`. Do NOT set `heroImageUrl`.
 - Write `src/content/articles/<slug>.md` with this frontmatter, then the body:
 
 ```yaml
@@ -70,9 +69,9 @@ takeaways:
 sources:
   - title: "विश्वासार्ह वृत्तसंस्थेचं नाव"
     url: "https://..."
-heroImageUrl: "https://loremflickr.com/1200/675/<english-keywords>?lock=<n>"
+heroImage: ../../assets/<slug>.jpg
 heroImageAlt: "प्रतिमेचं वर्णन"
-heroCredit: "चित्र"
+heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 ```
 

@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-12
 tags: ["सुरक्षा", "ऑनलाइन फसवणूक", "पासवर्ड", "तंत्रज्ञान"]
 heroImage: ../../assets/cover-digital-security.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/cybersecurity,lock,password?lock=102"
 heroImageAlt: "डिजिटल कुलूप आणि सुरक्षेचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

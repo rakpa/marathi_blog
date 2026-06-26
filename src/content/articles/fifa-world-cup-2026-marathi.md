@@ -16,7 +16,6 @@ sources:
     url: "https://www.aljazeera.com/sports/2026/6/10/fifa-world-cup-2026-explained-in-maps-and-charts"
 heroImageAlt: "फुटबॉल आणि वर्ल्ड कपचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/fifa-world-cup-2026-marathi.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/football,soccer,stadium?lock=123"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

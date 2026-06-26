@@ -16,7 +16,6 @@ sources:
     url: "https://www.outlookindia.com/sports/badminton/devika-sihag-vs-goh-jin-wei-bwf-thailand-masters-super-300-final-match-report"
 heroImageAlt: "बॅडमिंटन विजयाचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/devika-sihag-thailand-masters-2026.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/badminton,shuttlecock?lock=95"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

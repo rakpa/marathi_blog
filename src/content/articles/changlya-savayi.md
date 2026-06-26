@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-05
 tags: ["सवयी", "स्वयंविकास", "सातत्य", "कौशल्ये"]
 heroImage: ../../assets/cover-habits.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/habit,morning,routine?lock=53"
 heroImageAlt: "रोज एक पाऊल पुढे जाणाऱ्या वाटेचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

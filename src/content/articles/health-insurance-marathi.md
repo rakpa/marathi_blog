@@ -11,7 +11,6 @@ takeaways:
   - "फक्त हप्त्याकडे नको, तर 'क्लेम सेटलमेंट रेशो' आणि नेटवर्क हॉस्पिटल्सकडेही पाहा."
 heroImageAlt: "आरोग्य विमा आणि सुरक्षेचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/health-insurance-marathi.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/health,hospital,doctor?lock=137"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

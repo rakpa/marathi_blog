@@ -16,7 +16,6 @@ sources:
     url: "https://www.espn.com/chess/story/_/id/48494671/r-vaishali-wins-fide-candidates-challenge-ju-wenjun-women-world-championship"
 heroImageAlt: "बुद्धिबळ पटाचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/bharatiya-buddhibal-suvarnayug.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/chess,board,game?lock=32"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

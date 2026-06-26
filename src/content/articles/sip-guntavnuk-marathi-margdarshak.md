@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-18
 tags: ["गुंतवणूक", "वैयक्तिक अर्थ", "म्युच्युअल फंड", "SIP"]
 heroImage: ../../assets/cover-sip.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/investment,money,growth?lock=235"
 heroImageAlt: "हळूहळू वाढणाऱ्या रोपाचं प्रतीकात्मक चित्र — संयमातून घडणाऱ्या संपत्तीचं रूपक"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

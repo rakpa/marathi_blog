@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-05-27
 tags: ["परदेशी शिक्षण", "करिअर", "शिष्यवृत्ती", "नियोजन"]
 heroImage: ../../assets/cover-study-abroad.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/university,graduation,study?lock=200"
 heroImageAlt: "विमान आणि पदवीटोपीचं प्रतीकात्मक चित्र — परदेशी शिक्षणाचं रूपक"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

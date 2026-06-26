@@ -1,7 +1,6 @@
 ---
 title: "AI च्या युगात कोणती कौशल्यं शिकावीत?"
 summary: "AI नोकऱ्या खाणार की नव्या संधी आणणार? या गोंधळात न पडता, येत्या काळात खरोखर मौल्यवान ठरणाऱ्या कौशल्यांवर लक्ष कसं केंद्रित करायचं."
-heroImageUrl: "https://loremflickr.com/1200/675/artificial-intelligence,career,skills?lock=25"
 category: education
 type: analysis
 author: "विद्या संपादकीय"

@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-15
 tags: ["वैयक्तिक अर्थ", "बचत", "आर्थिक नियोजन"]
 heroImage: ../../assets/cover-emergency-fund.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/savings,money,piggybank?lock=18"
 heroImageAlt: "छत्रीखाली सुरक्षित नाण्यांचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

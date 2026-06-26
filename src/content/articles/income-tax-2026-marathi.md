@@ -15,7 +15,6 @@ sources:
   - title: "New Income Tax Rules 2026: What changes from April 1, 2026 for salaried taxpayers — Business Today"
     url: "https://www.businesstoday.in/personal-finance/tax/story/new-income-tax-rules-2026-what-changes-from-april-1-2026-for-salaried-taxpayers-how-tax-filing-will-change-522061-2026-03-24"
 heroImage: ../../assets/income-tax-2026-marathi.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/tax,calculator,money?lock=144"
 heroImageAlt: "आयकर विवरणपत्र आणि नाण्यांचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---

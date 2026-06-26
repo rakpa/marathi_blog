@@ -8,7 +8,6 @@ publishDate: 2026-06-20
 tags: ["स्टार्टअप", "गुंतवणूक", "AI", "उद्योजकता"]
 featured: true
 heroImage: ../../assets/cover-startup-funding.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/startup,office,growth?lock=39"
 heroImageAlt: "वर चढणाऱ्या आलेखाचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

@@ -16,7 +16,6 @@ sources:
     url: "https://www.businesstoday.in/technology/artificial-intelligence/story/ai-verification-startup-pramaana-labs-bags-27-mn-seed-funding-led-by-khosla-ventures-537779-2026-06-18"
 heroImageAlt: "AI विश्वासार्हता आणि पडताळणीचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/pramaana-labs-ai-verification-seed.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/artificial-intelligence,code,technology?lock=207"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

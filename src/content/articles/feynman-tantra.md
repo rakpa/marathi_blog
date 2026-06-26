@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-06-08
 tags: ["शिकण्याची कला", "मानसिक प्रारूप", "अभ्यास", "कौशल्ये"]
 heroImage: ../../assets/cover-feynman.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/blackboard,teaching,learning?lock=116"
 heroImageAlt: "फळ्यावर संकल्पना समजावून सांगण्याचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:

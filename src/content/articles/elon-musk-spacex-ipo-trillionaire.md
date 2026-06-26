@@ -18,7 +18,6 @@ sources:
     url: "https://fortune.com/2026/06/06/elon-musk-spacex-ipo-tesla-moonshot-mars/"
 heroImageAlt: "रॉकेट प्रक्षेपण आणि भांडवली बाजाराचं प्रतीकात्मक चित्र"
 heroImage: ../../assets/elon-musk-spacex-ipo-trillionaire.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/rocket,spacex,launch?lock=109"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---
 

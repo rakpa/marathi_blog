@@ -17,7 +17,6 @@ sources:
   - title: "WhatsApp gets new chief as Meta taps India's CRED founder Kunal Shah and invests $900M — TechCrunch"
     url: "https://techcrunch.com/2026/06/22/whatsapp-gets-new-chief-as-meta-taps-indias-cred-founder-kunal-shah-and-invests-900m-in-startup/"
 heroImage: ../../assets/meta-cred-kunal-shah-whatsapp.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/smartphone,app,messaging?lock=179"
 heroImageAlt: "WhatsApp, Meta आणि भारतीय फिनटेकच्या भागीदारीचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 ---

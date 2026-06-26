@@ -7,7 +7,6 @@ author: "विद्या संपादकीय"
 publishDate: 2026-05-24
 tags: ["मुलाखत", "करिअर", "नोकरी", "संवाद कौशल्य"]
 heroImage: ../../assets/cover-interview.jpg
-heroImageUrl: "https://loremflickr.com/1200/675/interview,office,job?lock=186"
 heroImageAlt: "मुलाखतीच्या संवादाचं प्रतीकात्मक चित्र"
 heroCredit: "चित्र: विद्या ग्राफिक्स"
 takeaways:
